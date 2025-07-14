@@ -4,3 +4,5 @@ google-cloud-vision
 google-cloud-documentai
 pandas
 openpyxl
+opencv-python-headless
+numpy
