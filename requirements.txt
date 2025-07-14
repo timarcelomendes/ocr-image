@@ -1,4 +1,6 @@
+# requirements.txt
 streamlit
 google-cloud-vision
+google-cloud-documentai
 pandas
 openpyxl
