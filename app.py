@@ -28,6 +28,10 @@ st.markdown("""
     [data-testid="stSidebar"] {
         background-color: #e9ecef; /* Fundo da sidebar */
     }
+    /* Garante que a legenda da imagem quebre a linha */
+    [data-testid="stImage"] + [data-testid="stCaption"] {
+        word-break: break-word;
+    }
 </style>
 """, unsafe_allow_html=True)
 
@@ -45,7 +49,7 @@ if 'show_balloons' not in st.session_state:
 
 # --- BARRA LATERAL (SIDEBAR) ---
 with st.sidebar:
-    st.image("images/logo.png", width=80) # Use um logo de sua preferência
+    st.image("https://i.imgur.com/v8D4ocJ.png", width=80) # Use um logo de sua preferência
     st.title("Processador AI")
     st.markdown("---")
     st.header("Como Usar")
@@ -58,7 +62,7 @@ with st.sidebar:
         """
     )
     st.markdown("---")
-    st.info("RAKITI Soluções em Analytics")
+    st.info("Aplicação desenvolvida por Gemini.")
 
 
 # --- TELA PRINCIPAL ---
@@ -98,13 +102,18 @@ with st.container():
     with col2:
         if uploaded_files:
             st.write(f"**Imagens prontas para análise:**")
-            thumb_cols = st.columns(6)
+            # Galeria de miniaturas organizada
+            thumb_cols = st.columns(6) # Ajuste o número de colunas conforme sua preferência
             for idx, file in enumerate(uploaded_files):
-                thumb_cols[idx % 6].image(
-                    file,
-                    caption=f"_{file.name[:15]}..._",
-                    use_container_width=True
-                )
+                # *** MUDANÇA APLICADA AQUI ***
+                # Usa a coluna como um container para a imagem e a legenda
+                with thumb_cols[idx % 6]:
+                    st.image(
+                        file,
+                        use_container_width=True
+                    )
+                    # Exibe o nome completo do arquivo abaixo da imagem
+                    st.caption(file.name)
         else:
             st.info("Aguardando o upload para ativar a análise. Veja as instruções na barra lateral.")
 
@@ -132,7 +141,7 @@ if process_button:
 
     progress_bar.empty()
     st.session_state.processed = True
-    st.session_state.show_balloons = True  # Ativa os balões para a próxima renderização
+    st.session_state.show_balloons = True
     st.toast("✅ Análise concluída com sucesso!", icon="🎉")
     st.rerun()
 
@@ -143,8 +152,7 @@ if st.session_state.processed and st.session_state.results:
     with st.container():
         st.markdown("### ✏️ 2. Validar e Exportar Resultados")
         st.markdown("Os dados extraídos estão abaixo. **Clique duas vezes em qualquer célula para corrigir um valor** antes de exportar.")
-        
-        # Comemoração com balões (só na primeira vez)
+
         if st.session_state.show_balloons:
             st.balloons()
             st.session_state.show_balloons = False
