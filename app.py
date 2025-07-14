@@ -59,7 +59,7 @@ if st.session_state.get('show_success_toast'):
 
 # --- BARRA LATERAL (SIDEBAR) (sem alterações) ---
 with st.sidebar:
-    st.image("https://i.imgur.com/v8D4ocJ.png", width=80)
+    st.logo("images/logo.png", size="large")
     st.title("Processador AI")
     st.markdown("---")
     st.header("Como Usar")
@@ -72,7 +72,7 @@ with st.sidebar:
         """
     )
     st.markdown("---")
-    st.info("Aplicação desenvolvida por Gemini.")
+    st.info("Aplicação desenvolvida por RAKITI.")
 
 
 # --- TELA PRINCIPAL ---
