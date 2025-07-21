@@ -45,7 +45,7 @@ with st.sidebar:
     with st.expander("⚙️ Processar Novas Imagens", expanded=True):
         model_id = st.text_input(
             "Azure Model ID:", 
-            placeholder="Digite seu Azure Model ID"
+            placeholder="Digite seu Azure Model ID",
             value="", # Coloque seu Model ID aqui como padrão
             help="Cole o ID do seu modelo treinado no Document Intelligence Studio."
         )
