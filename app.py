@@ -4,6 +4,13 @@ import streamlit as st
 import pandas as pd
 import io
 
+# --- INICIALIZAÇÃO DO SESSION STATE ---
+# Coloque este bloco no início do seu script
+if "uploader_key" not in st.session_state:
+    st.session_state.uploader_key = 0
+if "processed" not in st.session_state:
+    st.session_state.processed = False # Inicialize como False
+
 # Importa as funções do nosso arquivo de lógica separada
 from azure_form_recognizer import process_with_custom_model, preprocess_image
 
