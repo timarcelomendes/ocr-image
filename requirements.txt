@@ -1,0 +1,7 @@
+# requirements.txt
+streamlit
+pandas
+openpyxl
+opencv-python-headless
+numpy
+azure-ai-formrecognizer
