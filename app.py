@@ -131,7 +131,7 @@ with st.container():
             thumb_cols = st.columns(6)
             for idx, file in enumerate(uploaded_files):
                 with thumb_cols[idx % 6]:
-                    st.image(file, use_column_width=True)
+                    st.image(file, use_container_width=True)
                     st.caption(file.name)
         else:
             st.info("Aguardando o upload para ativar a análise.")
