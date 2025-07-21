@@ -45,7 +45,8 @@ with st.sidebar:
     with st.expander("⚙️ Processar Novas Imagens", expanded=True):
         model_id = st.text_input(
             "Azure Model ID:", 
-            value="OCR-DOCUMENTS", # Coloque seu Model ID aqui como padrão
+            placeholder="Digite seu Azure Model ID"
+            value="", # Coloque seu Model ID aqui como padrão
             help="Cole o ID do seu modelo treinado no Document Intelligence Studio."
         )
         st.info(f"Usando Modelo: **{model_id}**")
